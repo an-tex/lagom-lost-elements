@@ -5,7 +5,7 @@ import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceCall}
 
 trait HelloWorldStreamClientService extends Service {
 
-  def test: ServiceCall[NotUsed, Seq[Int]]
+  def test: ServiceCall[NotUsed, NotUsed]
 
   override final def descriptor: Descriptor = {
     import Service._

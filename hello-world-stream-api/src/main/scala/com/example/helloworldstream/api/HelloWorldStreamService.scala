@@ -2,6 +2,7 @@ package com.example.helloworldstream.api
 
 import akka.NotUsed
 import akka.stream.scaladsl.Source
+import akka.util.ByteString
 import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceCall}
 
 /**
@@ -12,7 +13,7 @@ import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceCall}
   */
 trait HelloWorldStreamService extends Service {
 
-  def stream: ServiceCall[NotUsed, Source[Int, NotUsed]]
+  def stream: ServiceCall[NotUsed, Source[Array[Byte], NotUsed]]
 
   override final def descriptor: Descriptor = {
     import Service._
