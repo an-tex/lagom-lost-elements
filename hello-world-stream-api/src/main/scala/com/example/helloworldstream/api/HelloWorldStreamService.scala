@@ -5,22 +5,16 @@ import akka.stream.scaladsl.Source
 import akka.util.ByteString
 import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceCall}
 
-/**
-  * The Hello World stream interface.
-  *
-  * This describes everything that Lagom needs to know about how to serve and
-  * consume the HelloWorldStream service.
-  */
 trait HelloWorldStreamService extends Service {
 
-  def stream: ServiceCall[NotUsed, Source[Array[Byte], NotUsed]]
+  def echo : ServiceCall[Source[Int, NotUsed], Source[Int, NotUsed]]
 
   override final def descriptor: Descriptor = {
     import Service._
 
     named("hello-world-stream")
       .withCalls(
-        namedCall("stream", stream)
+        namedCall("echo", echo),
       ).withAutoAcl(true)
   }
 }

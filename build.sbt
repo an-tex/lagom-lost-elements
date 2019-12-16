@@ -1,3 +1,5 @@
+import scala.util.Random
+
 organization in ThisBuild := "com.example"
 version in ThisBuild := "1.0-SNAPSHOT"
 
@@ -21,8 +23,6 @@ lazy val `hello-world-impl` = (project in file("hello-world-impl"))
   .enablePlugins(LagomScala)
   .settings(
     libraryDependencies ++= Seq(
-      lagomScaladslPersistenceCassandra,
-      lagomScaladslKafkaBroker,
       lagomScaladslTestKit,
       macwire,
       scalaTest
@@ -60,3 +60,7 @@ lazy val `hello-world-stream-client` = (project in file("hello-world-stream-clie
   )
   .dependsOn(`hello-world-stream-api`)
 
+lagomKafkaEnabled in ThisBuild := false
+lagomCassandraEnabled in ThisBuild := false
+lagomServiceLocatorPort in ThisBuild := Random.nextInt(10000) + 50000
+lagomServiceGatewayPort in ThisBuild := Random.nextInt(10000) + 50000
