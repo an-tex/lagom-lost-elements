@@ -1,3 +1,3 @@
-testing backpressure between lagom services.
+testing streaming between lagom services.
 
-on mac os there seem to be a 128kb (512kb burst) system buffer. otherwise backpressure works just fine.
+a simple echo endpoint is loosing elements
