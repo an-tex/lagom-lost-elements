@@ -1,3 +1,5 @@
 testing streaming between lagom services.
 
-a simple echo endpoint is loosing elements
+a simple echo endpoint is loosing elements.
+
+includes a workaround.
