@@ -33,6 +33,9 @@ object HelloWorldStreamService {
   *
   * The callers source doesn't complete, hence the websocket is kept open until the sender finishes.
   * The callee still needs to know when the callers Source has completed, so a Wrapper is used indicating the end of stream with an empty Element.
+  *
+  * You also need to define a serializer for the wrapped element, e.g:
+  * implicit val wrapperFormatter : play.api.libs.json.Format[Int] = play.api.libs.json.Json.format
   */
 object HalfClosedWebsocketSupport {
   case class Wrapper[T](value: Option[T])
